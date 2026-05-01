@@ -1,0 +1,332 @@
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  #gr-wrap {
+    font-family: 'Jost', sans-serif;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3rem 2rem 4rem;
+    text-align: center;
+    color: #1a1a1a;
+  }
+
+  #gr-wrap * { box-sizing: border-box; }
+
+  #gr-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    color: #1a1a1a;
+    margin-bottom: 0.2rem;
+  }
+
+  #gr-subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 2.5rem;
+  }
+
+  #gr-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  #gr-wrap textarea {
+    width: 100%;
+    max-width: 580px;
+    min-height: 100px;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-bottom: 2px solid #1a1a1a;
+    border-radius: 2px;
+    padding: 1rem 1.2rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.95rem;
+    color: #1a1a1a;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  #gr-wrap textarea:focus {
+    border-color: #1a1a1a;
+    background: #fff;
+  }
+
+  #gr-wrap textarea::placeholder { color: #bbb; }
+
+  #gr-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #gr-wrap input[type="number"] {
+    width: 110px;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-bottom: 2px solid #1a1a1a;
+    border-radius: 2px;
+    padding: 0.6rem 0.9rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.95rem;
+    color: #1a1a1a;
+    outline: none;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+
+  #gr-wrap input[type="number"]:focus { background: #fff; }
+
+  #gr-check-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.05em;
+    color: #666;
+    cursor: pointer;
+  }
+
+  #gr-wrap input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #1a1a1a;
+    cursor: pointer;
+  }
+
+  #gr-btn {
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 0.85rem 2.5rem;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.1s;
+  }
+
+  #gr-btn:hover { background: #333; }
+  #gr-btn:active { transform: scale(0.97); }
+
+  #gr-who {
+    font-family: 'Jost', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: #1a1a1a;
+    margin-bottom: 2rem;
+    display: none;
+  }
+
+  #gr-output {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.4rem;
+  }
+
+  .gr-group-box {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-top: 3px solid #1a1a1a;
+    border-radius: 2px;
+    padding: 1.8rem 2rem;
+    min-height: 120px;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+
+  .gr-group-box.drag-over {
+    background: #f5f5f5;
+    border-top-color: #888;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+
+  .gr-group-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #bbb;
+    margin-bottom: 0.9rem;
+  }
+
+  .gr-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+  }
+
+  .gr-chip {
+    display: inline-block;
+    background: #f7f7f7;
+    border: 1px solid #e4e4e4;
+    border-radius: 100px;
+    padding: 9px 22px;
+    font-family: 'Jost', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: #1a1a1a;
+    cursor: grab;
+    user-select: none;
+    transition: background 0.15s, box-shadow 0.15s, transform 0.15s, opacity 0.15s;
+    white-space: nowrap;
+  }
+
+  .gr-chip:hover {
+    background: #fff;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
+  }
+
+  .gr-chip.dragging {
+    opacity: 0.3;
+    cursor: grabbing;
+  }
+
+  #gr-hint {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    color: #ccc;
+    margin-top: 2rem;
+    display: none;
+  }
+</style>
+
+<div id="gr-wrap">
+  <div id="gr-form">
+    <textarea id="wordInput" placeholder="Enter names separated by commas or spaces..."></textarea>
+    <div id="gr-controls">
+      <input type="number" id="groupSize" placeholder="Size" min="1">
+      <label id="gr-check-label">
+        <input type="checkbox" id="distributeExtra" checked>
+        Distribute extras
+      </label>
+      <button id="gr-btn" onclick="generateGroups()">Randomize</button>
+    </div>
+  </div>
+
+  <div id="gr-who">who's with who?</div>
+  <div id="gr-output"></div>
+</div>
+
+<script>
+  let draggedChip = null;
+  let sourceGroup = null;
+
+  function generateGroups() {
+    const input = document.getElementById('wordInput').value;
+    const groupSize = parseInt(document.getElementById('groupSize').value);
+    const distributeExtra = document.getElementById('distributeExtra').checked;
+    const outputDiv = document.getElementById('gr-output');
+
+    if (!groupSize || groupSize < 1) {
+      outputDiv.innerHTML = '<p style="color:#aaa;font-size:0.85rem;letter-spacing:0.1em;">Please enter a valid group size.</p>';
+      return;
+    }
+
+    let words = input.split(/[\s,]+/).filter(Boolean);
+    if (!words.length) return;
+
+    shuffleArray(words);
+
+    let groups = [];
+    for (let i = 0; i < words.length; i += groupSize) {
+      groups.push(words.slice(i, Math.min(i + groupSize, words.length)));
+    }
+
+    if (distributeExtra && groups.length > 1 && groups[groups.length - 1].length < groupSize) {
+      const extras = groups.pop();
+      extras.forEach(word => {
+        groups[Math.floor(Math.random() * groups.length)].push(word);
+      });
+    }
+
+    renderGroups(groups);
+    document.getElementById('gr-who').style.display = 'block';
+  }
+
+  function renderGroups(groups) {
+    const outputDiv = document.getElementById('gr-output');
+    outputDiv.innerHTML = '';
+
+    groups.forEach((group, i) => {
+      const box = document.createElement('div');
+      box.className = 'gr-group-box';
+
+      const label = document.createElement('div');
+      label.className = 'gr-group-label';
+      label.style.display = 'none';
+      label.textContent = `Group ${i + 1}`;
+      box.appendChild(label);
+
+      const chips = document.createElement('div');
+      chips.className = 'gr-chips';
+      group.forEach(name => chips.appendChild(makeChip(name)));
+      box.appendChild(chips);
+
+      box.addEventListener('dragover', e => {
+        e.preventDefault();
+        box.classList.add('drag-over');
+      });
+
+      box.addEventListener('dragleave', e => {
+        if (!box.contains(e.relatedTarget)) box.classList.remove('drag-over');
+      });
+
+      box.addEventListener('drop', e => {
+        e.preventDefault();
+        box.classList.remove('drag-over');
+        if (draggedChip && sourceGroup !== box) {
+          box.querySelector('.gr-chips').appendChild(draggedChip);
+          draggedChip.classList.remove('dragging');
+          draggedChip = null;
+          sourceGroup = null;
+        }
+      });
+
+      outputDiv.appendChild(box);
+    });
+  }
+
+  function makeChip(name) {
+    const chip = document.createElement('span');
+    chip.className = 'gr-chip';
+    chip.textContent = name;
+    chip.draggable = true;
+
+    chip.addEventListener('dragstart', () => {
+      draggedChip = chip;
+      sourceGroup = chip.closest('.gr-group-box');
+      setTimeout(() => chip.classList.add('dragging'), 0);
+    });
+
+    chip.addEventListener('dragend', () => {
+      chip.classList.remove('dragging');
+      document.querySelectorAll('.gr-group-box').forEach(b => b.classList.remove('drag-over'));
+    });
+
+    return chip;
+  }
+
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+</script>

@@ -1,0 +1,548 @@
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  .page-section[data-section-id="69bc25727237a849401568fd"] .section-background,
+  .page-section[data-section-id="69bc25727237a849401568fd"] {
+    background-color: #0A0A0A !important;
+  }
+
+  .page-section[data-section-id="69bc25727237a849401568fd"] {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .page-section[data-section-id="69bc25727237a849401568fd"] .content-wrapper {
+    padding: 0 !important;
+  }
+
+  .page-section[data-section-id="69bc25727237a849401568fd"] .fe-block-yui_3_17_2_1_1773937898160_796 {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+</style>
+<style>
+  #hl-app {
+    --hl-red: #D4500A;
+    --hl-black: #0A0A0A;
+    --hl-off-white: #F5F2EC;
+    --hl-yellow: #FFD000;
+    --hl-gray: #2A2A2A;
+    --hl-mid-gray: #555;
+    --hl-border: #333;
+    font-family: 'IBM Plex Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--hl-black);
+    color: var(--hl-off-white);
+  }
+
+  #hl-app * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  #hl-app .hl-header {
+    background: var(--hl-red);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 4px solid var(--hl-yellow);
+  }
+
+  #hl-app .hl-live-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--hl-yellow);
+    animation: hl-blink 1s infinite;
+    flex-shrink: 0;
+  }
+  @keyframes hl-blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  #hl-app .hl-header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    letter-spacing: 3px;
+    color: white;
+    line-height: 1;
+    padding: 0.8rem 0;
+  }
+
+  #hl-app .hl-clear-hint {
+    margin-left: auto;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 1px;
+  }
+
+  #hl-app .hl-main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 360px 1fr;
+  }
+
+  #hl-app .hl-input-panel {
+    background: var(--hl-gray);
+    border-right: 2px solid var(--hl-border);
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+  }
+
+  #hl-app .hl-panel-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    letter-spacing: 3px;
+    color: var(--hl-class-color, var(--hl-red));
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  #hl-app .hl-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  #hl-app label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    color: #999;
+    text-transform: uppercase;
+  }
+
+  #hl-app input[type="text"],
+  #hl-app textarea,
+  #hl-app select {
+    background: var(--hl-black);
+    border: 1px solid var(--hl-border);
+    color: var(--hl-off-white);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    padding: 0.7rem 0.9rem;
+    border-radius: 2px;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  #hl-app input[type="text"]:focus,
+  #hl-app textarea:focus,
+  #hl-app select:focus { border-color: var(--hl-red); }
+
+  #hl-app textarea {
+    resize: vertical;
+    min-height: 90px;
+    line-height: 1.5;
+  }
+
+  #hl-app select {
+    appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23D4500A' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+    background-color: var(--hl-black);
+  }
+
+  #hl-app select option { background: #0A0A0A; }
+
+  #hl-app .hl-submit-btn {
+    background: var(--hl-red);
+    color: white;
+    border: none;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 3px;
+    padding: 0.9rem 1rem;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 2px;
+    transition: background 0.15s, transform 0.1s;
+    margin-top: 0.5rem;
+  }
+
+  #hl-app .hl-submit-btn:hover { background: #b54008; }
+  #hl-app .hl-submit-btn:active { transform: scale(0.98); }
+  #hl-app .hl-submit-btn:disabled { background: #555; cursor: not-allowed; }
+
+  #hl-app .hl-board-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  #hl-app .hl-board-header {
+    grid-column: 1 / -1;
+    background: var(--hl-black);
+    border-bottom: 2px solid var(--hl-border);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  #hl-app .hl-class-title {
+    grid-column: 1 / -1;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    letter-spacing: 3px;
+    color: var(--hl-class-color, var(--hl-red));
+    text-transform: uppercase;
+    padding: 0.5rem 1.5rem 0;
+    transition: color 0.2s;
+  }
+
+  #hl-app .hl-col-head {
+    padding: 1rem 1.5rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 3px;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+  #hl-app .hl-col-head.ten { color: var(--hl-yellow); border-right: 2px solid var(--hl-border); }
+  #hl-app .hl-col-head.regular { color: #aaa; }
+
+  #hl-app .hl-col-badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    padding: 0.2rem 0.5rem;
+    border-radius: 2px;
+    font-weight: 600;
+  }
+
+  #hl-app .hl-col-badge.ten { background: var(--hl-yellow); color: var(--hl-black); }
+  #hl-app .hl-col-badge.regular { background: var(--hl-mid-gray); color: var(--hl-off-white); }
+
+  #hl-app .hl-col {
+    padding: 1.5rem 1.2rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  #hl-app .hl-col.ten { border-right: 2px solid var(--hl-border); }
+
+  #hl-app .hl-empty-state {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: #3a3a3a;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  #hl-app .hl-hidden { display: none !important; }
+
+  #hl-app .hl-card {
+    background: var(--hl-gray);
+    border-left: 4px solid var(--hl-border);
+    padding: 1.1rem 1.2rem;
+    border-radius: 0 2px 2px 0;
+    animation: hl-slideIn 0.25s ease;
+    position: relative;
+  }
+
+  @keyframes hl-slideIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  #hl-app .hl-card.ten-sec { border-left-color: var(--hl-yellow); }
+  #hl-app .hl-card.regular { border-left-color: var(--hl-mid-gray); }
+
+  #hl-app .hl-card-name-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-baseline: baseline;
+    gap: 0 0.5rem;
+    margin-bottom: 0.7rem;
+    line-height: 1.4;
+  }
+
+  #hl-app .hl-card-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    color: #ffffff;
+    line-height: 1.3;
+    flex-shrink: 0;
+  }
+
+  #hl-app .hl-card-problem {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1rem;
+    color: #ddd;
+    line-height: 1.55;
+    font-weight: 400;
+    align-self: center;
+  }
+
+  #hl-app .hl-card-meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: #999;
+    letter-spacing: 1px;
+    background: rgba(0,0,0,0.25);
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 2px;
+  }
+
+  #hl-app .hl-card-type-tag {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    padding: 0.2rem 0.5rem;
+    border-radius: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  #hl-app .hl-card-type-tag.ten-sec { background: var(--hl-yellow); color: var(--hl-black); }
+  #hl-app .hl-card-type-tag.regular { background: #3a3a3a; color: #ccc; }
+
+  #hl-app .hl-delete-btn {
+    position: absolute;
+    top: 0.6rem; right: 0.6rem;
+    background: none;
+    border: none;
+    color: #3a3a3a;
+    font-size: 1rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0.2rem;
+    transition: color 0.15s;
+  }
+  #hl-app .hl-delete-btn:hover { color: var(--hl-red); }
+
+  @media (max-width: 700px) {
+    #hl-app .hl-main { grid-template-columns: 1fr; }
+    #hl-app .hl-input-panel { border-right: none; border-bottom: 2px solid var(--hl-border); }
+    #hl-app .hl-board-panel { grid-template-columns: 1fr; }
+    #hl-app .hl-board-header { grid-template-columns: 1fr; }
+    #hl-app .hl-col-head.ten { border-right: none; border-bottom: 2px solid var(--hl-border); }
+    #hl-app .hl-col.ten { border-right: none; border-bottom: 2px solid var(--hl-border); }
+  }
+</style>
+
+<div id="hl-app" style="--hl-class-color: #D4500A;">
+  <div class="hl-header">
+    <div class="hl-live-dot"></div>
+    <h1>Help List</h1>
+    <div class="hl-clear-hint">⌘⇧X · clear all</div>
+  </div>
+
+  <div class="hl-main">
+    <div class="hl-input-panel">
+      <div class="hl-panel-label">New Request</div>
+
+      <div class="hl-field-group">
+        <label for="hl-class-select">Class</label>
+        <select id="hl-class-select" onchange="hlSwitchClass()">
+          <option value="device">Device Invention</option>
+          <option value="sustainable">Sustainable Design</option>
+        </select>
+      </div>
+
+      <div class="hl-field-group">
+        <label for="hl-name">Name</label>
+        <input type="text" id="hl-name" placeholder="e.g. Funky Sally" autocomplete="off">
+      </div>
+
+      <div class="hl-field-group">
+        <label for="hl-issue">Issue</label>
+        <textarea id="hl-issue" placeholder="Describe the issue..."></textarea>
+      </div>
+
+      <div class="hl-field-group">
+        <label for="hl-seg-type">Time Request</label>
+        <select id="hl-seg-type">
+          <option value="ten-sec">10 Second</option>
+          <option value="regular">Regular</option>
+        </select>
+      </div>
+
+      <button class="hl-submit-btn" id="hl-submit" onclick="hlAddCard()">ASSIGN →</button>
+    </div>
+
+    <div class="hl-board-panel">
+      <div class="hl-board-header">
+        <div class="hl-class-title" id="hl-board-class-title">Device Invention</div>
+        <div class="hl-col-head ten">10 SECOND <span class="hl-col-badge ten">QUICK</span></div>
+        <div class="hl-col-head regular">REGULAR <span class="hl-col-badge regular">FULL</span></div>
+      </div>
+
+      <div class="hl-col ten" id="hl-col-device-ten">
+        <div class="hl-empty-state" id="hl-empty-device-ten">No 10-sec requests yet</div>
+      </div>
+      <div class="hl-col regular" id="hl-col-device-regular">
+        <div class="hl-empty-state" id="hl-empty-device-regular">No regular requests yet</div>
+      </div>
+
+      <div class="hl-col ten hl-hidden" id="hl-col-sustainable-ten">
+        <div class="hl-empty-state" id="hl-empty-sustainable-ten">No 10-sec requests yet</div>
+      </div>
+      <div class="hl-col regular hl-hidden" id="hl-col-sustainable-regular">
+        <div class="hl-empty-state" id="hl-empty-sustainable-regular">No regular requests yet</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBcT6ZxppEmvgtvGCK1N4KMx36VZJuoLWc",
+    authDomain: "help-list-49ce7.firebaseapp.com",
+    projectId: "help-list-49ce7",
+    storageBucket: "help-list-49ce7.firebasestorage.app",
+    messagingSenderId: "587786580569",
+    appId: "1:587786580569:web:721b81520e3dce53987748"
+  };
+
+  const fbApp = initializeApp(firebaseConfig);
+  const db = getFirestore(fbApp);
+
+  let hlCurrentClass = 'device';
+
+  // Real-time listener
+  const q = query(collection(db, 'cards'), orderBy('timestamp', 'desc'));
+  onSnapshot(q, (snapshot) => {
+    // Clear all columns
+    ['device', 'sustainable'].forEach(cls => {
+      ['ten', 'regular'].forEach(side => {
+        const col = document.getElementById('hl-col-' + cls + '-' + side);
+        col.querySelectorAll('.hl-card').forEach(c => c.remove());
+      });
+    });
+
+    snapshot.forEach(docSnap => {
+      hlRenderCard(docSnap.id, docSnap.data());
+    });
+
+    // Refresh empty states
+    ['device', 'sustainable'].forEach(cls => {
+      ['ten', 'regular'].forEach(side => {
+        hlCheckEmpty(document.getElementById('hl-col-' + cls + '-' + side));
+      });
+    });
+  });
+
+  function hlRenderCard(id, data) {
+    const side = data.type === 'ten-sec' ? 'ten' : 'regular';
+    const col = document.getElementById('hl-col-' + data.cls + '-' + side);
+    if (!col) return;
+
+    const typeLabel = data.type === 'ten-sec' ? '10-SEC' : 'REGULAR';
+    const card = document.createElement('div');
+    card.className = 'hl-card ' + data.type;
+    card.dataset.id = id;
+    card.innerHTML =
+      '<button class="hl-delete-btn" title="Remove">\u00d7</button>' +
+      '<span class="hl-card-type-tag ' + data.type + '">' + typeLabel + '</span>' +
+      '<div class="hl-card-name-row">' +
+        '<span class="hl-card-name">' + hlEscape(data.name) + '</span>' +
+        '<span class="hl-card-problem">' + hlEscape(data.issue) + '</span>' +
+      '</div>' +
+      '<div class="hl-card-meta">' + data.dateStr + ' \u00b7 ' + data.timeStr + '</div>';
+
+    card.querySelector('.hl-delete-btn').addEventListener('click', () => hlRemoveCard(id, card));
+    col.appendChild(card);
+  }
+
+  window.hlAddCard = async function() {
+    const name = document.getElementById('hl-name').value.trim();
+    const issue = document.getElementById('hl-issue').value.trim();
+    const type = document.getElementById('hl-seg-type').value;
+
+    if (!name || !issue) {
+      const inputId = !name ? 'hl-name' : 'hl-issue';
+      const el = document.getElementById(inputId);
+      el.style.borderColor = '#D4500A';
+      el.focus();
+      setTimeout(() => { el.style.borderColor = ''; }, 1200);
+      return;
+    }
+
+    const btn = document.getElementById('hl-submit');
+    btn.disabled = true;
+    btn.textContent = 'SAVING...';
+
+    const now = new Date();
+    try {
+      await addDoc(collection(db, 'cards'), {
+        name, issue, type,
+        cls: hlCurrentClass,
+        dateStr: now.toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'}),
+        timeStr: now.toLocaleTimeString('en-US', {hour:'2-digit', minute:'2-digit'}),
+        timestamp: now.getTime()
+      });
+      document.getElementById('hl-name').value = '';
+      document.getElementById('hl-issue').value = '';
+      document.getElementById('hl-name').focus();
+    } catch(e) {
+      alert('Error saving: ' + e.message);
+    }
+
+    btn.disabled = false;
+    btn.textContent = 'ASSIGN \u2192';
+  };
+
+  async function hlRemoveCard(id, card) {
+    card.style.opacity = '0';
+    card.style.transform = 'translateX(10px)';
+    card.style.transition = 'opacity 0.2s, transform 0.2s';
+    setTimeout(async () => {
+      try { await deleteDoc(doc(db, 'cards', id)); } catch(e) { alert('Error: ' + e.message); }
+    }, 200);
+  }
+
+  window.hlSwitchClass = function() {
+    hlCurrentClass = document.getElementById('hl-class-select').value;
+    const labels = { device: 'Device Invention', sustainable: 'Sustainable Design' };
+    const colors = { device: '#D4500A', sustainable: '#4CAF50' };
+    document.getElementById('hl-board-class-title').textContent = labels[hlCurrentClass];
+    document.getElementById('hl-app').style.setProperty('--hl-class-color', colors[hlCurrentClass]);
+    ['device', 'sustainable'].forEach(cls => {
+      const active = cls === hlCurrentClass;
+      document.getElementById('hl-col-' + cls + '-ten').classList.toggle('hl-hidden', !active);
+      document.getElementById('hl-col-' + cls + '-regular').classList.toggle('hl-hidden', !active);
+    });
+  };
+
+  window.hlClearAll = async function() {
+    const ids = [];
+    ['ten', 'regular'].forEach(side => {
+      document.getElementById('hl-col-' + hlCurrentClass + '-' + side)
+        .querySelectorAll('.hl-card').forEach(c => ids.push(c.dataset.id));
+    });
+    for (const id of ids) {
+      try { await deleteDoc(doc(db, 'cards', id)); } catch(e) {}
+    }
+  };
+
+  function hlCheckEmpty(col) {
+    const emptyEl = document.getElementById(col.id.replace('hl-col-', 'hl-empty-'));
+    if (emptyEl) emptyEl.style.display = col.querySelectorAll('.hl-card').length === 0 ? '' : 'none';
+  }
+
+  function hlEscape(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) hlAddCard();
+    if (e.key === 'X' && e.shiftKey && (e.metaKey || e.ctrlKey)) { e.preventDefault(); hlClearAll(); }
+  });
+</script>
