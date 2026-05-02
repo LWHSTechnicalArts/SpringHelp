@@ -127,6 +127,20 @@
     min-height: 90px;
     line-height: 1.5;
   }
+  #hl-app .hl-next-badge {
+   display: inline-block;
+   font-family: 'IBM Plex Mono', monospace;
+   font-size: 0.62rem;
+   font-weight: 600;
+   letter-spacing: 2px;
+   padding: 0.2rem 0.6rem;
+   border-radius: 2px;
+   background: var(--hl-yellow);
+   color: var(--hl-black);
+   text-transform: uppercase;
+   margin-bottom: 0.6rem;
+   margin-left: 0.4rem;
+  }
 
   #hl-app select {
     appearance: none;
@@ -431,22 +445,31 @@
     hlApplyFade();
   });
 
-  function hlApplyFade() {
-    ['device', 'sustainable'].forEach(cls => {
-      ['ten', 'regular'].forEach(side => {
-        const col = document.getElementById('hl-col-' + cls + '-' + side);
-        const cards = [...col.querySelectorAll('.hl-card')];
-        const total = cards.length;
-        cards.forEach((card, i) => {
-          // cards are ordered newest first (timestamp desc)
-          // so last card = oldest = most visible (opacity 1)
-          // first card = newest = least visible
-          const opacity = Math.max(0.2, (i + 1) / total);
-          card.style.opacity = opacity;
-        });
+ function hlApplyFade() {
+  ['device', 'sustainable'].forEach(cls => {
+    ['ten', 'regular'].forEach(side => {
+      const col = document.getElementById('hl-col-' + cls + '-' + side);
+      const cards = [...col.querySelectorAll('.hl-card')];
+
+      // Reset all cards
+      cards.forEach(card => {
+        card.style.opacity = '1';
+        const badge = card.querySelector('.hl-next-badge');
+        if (badge) badge.remove();
       });
+
+      // Last card = oldest = add NEXT badge
+      if (cards.length > 0) {
+        const oldest = cards[cards.length - 1];
+        const nameRow = oldest.querySelector('.hl-card-name-row');
+        const badge = document.createElement('span');
+        badge.className = 'hl-next-badge';
+        badge.textContent = 'NEXT';
+        nameRow.prepend(badge);
+      }
     });
-  }
+  });
+}
 
   function hlRenderCard(id, data) {
     const side = data.type === 'ten-sec' ? 'ten' : 'regular';
