@@ -1,4 +1,3 @@
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   * {
     margin: 0;
@@ -10,15 +9,17 @@
     min-height: 100vh;
   }
 </style>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   #hl-app {
     --hl-red: #D4500A;
-    --hl-black: #0A0A0A;
+    --hl-black: #000000;
     --hl-off-white: #F5F2EC;
     --hl-yellow: #FFD000;
-    --hl-gray: #2A2A2A;
+    --hl-gray: #1a1a1a;
     --hl-mid-gray: #555;
-    --hl-border: #333;
+    --hl-border: #2a2a2a;
     font-family: 'IBM Plex Sans', sans-serif;
     display: flex;
     flex-direction: column;
@@ -137,7 +138,7 @@
     background-color: var(--hl-black);
   }
 
-  #hl-app select option { background: #0A0A0A; }
+  #hl-app select option { background: #000000; }
 
   #hl-app .hl-submit-btn {
     background: var(--hl-red);
@@ -238,6 +239,7 @@
     border-radius: 0 2px 2px 0;
     animation: hl-slideIn 0.25s ease;
     position: relative;
+    transition: opacity 0.3s;
   }
 
   @keyframes hl-slideIn {
@@ -407,10 +409,8 @@
 
   let hlCurrentClass = 'device';
 
-  // Real-time listener
   const q = query(collection(db, 'cards'), orderBy('timestamp', 'desc'));
   onSnapshot(q, (snapshot) => {
-    // Clear all columns
     ['device', 'sustainable'].forEach(cls => {
       ['ten', 'regular'].forEach(side => {
         const col = document.getElementById('hl-col-' + cls + '-' + side);
@@ -422,13 +422,31 @@
       hlRenderCard(docSnap.id, docSnap.data());
     });
 
-    // Refresh empty states
     ['device', 'sustainable'].forEach(cls => {
       ['ten', 'regular'].forEach(side => {
         hlCheckEmpty(document.getElementById('hl-col-' + cls + '-' + side));
       });
     });
+
+    hlApplyFade();
   });
+
+  function hlApplyFade() {
+    ['device', 'sustainable'].forEach(cls => {
+      ['ten', 'regular'].forEach(side => {
+        const col = document.getElementById('hl-col-' + cls + '-' + side);
+        const cards = [...col.querySelectorAll('.hl-card')];
+        const total = cards.length;
+        cards.forEach((card, i) => {
+          // cards are ordered newest first (timestamp desc)
+          // so last card = oldest = most visible (opacity 1)
+          // first card = newest = least visible
+          const opacity = Math.max(0.2, (i + 1) / total);
+          card.style.opacity = opacity;
+        });
+      });
+    });
+  }
 
   function hlRenderCard(id, data) {
     const side = data.type === 'ten-sec' ? 'ten' : 'regular';
