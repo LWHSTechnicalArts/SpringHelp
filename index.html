@@ -20,6 +20,7 @@
     --hl-gray: #2A2A2A;
     --hl-mid-gray: #555;
     --hl-border: #333;
+    --hl-purple: #7C3AED;
     font-family: 'IBM Plex Sans', sans-serif;
     display: flex;
     flex-direction: column;
@@ -68,16 +69,17 @@
   #hl-app .hl-main {
     flex: 1;
     display: grid;
-    grid-template-columns: 360px 1fr;
+    grid-template-columns: 320px 1fr;
   }
 
+  /* INPUT PANEL */
   #hl-app .hl-input-panel {
     background: var(--hl-gray);
     border-right: 2px solid var(--hl-border);
-    padding: 2rem 1.5rem;
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 1.4rem;
+    gap: 1.1rem;
   }
 
   #hl-app .hl-panel-label {
@@ -91,7 +93,7 @@
   #hl-app .hl-field-group {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.35rem;
   }
 
   #hl-app label {
@@ -123,7 +125,7 @@
 
   #hl-app textarea {
     resize: vertical;
-    min-height: 90px;
+    min-height: 80px;
     line-height: 1.5;
   }
 
@@ -151,13 +153,14 @@
     width: 100%;
     border-radius: 2px;
     transition: background 0.15s, transform 0.1s;
-    margin-top: 0.5rem;
+    margin-top: 0.3rem;
   }
 
   #hl-app .hl-submit-btn:hover { background: #b54008; }
   #hl-app .hl-submit-btn:active { transform: scale(0.98); }
   #hl-app .hl-submit-btn:disabled { background: #555; cursor: not-allowed; }
 
+  /* BOARD */
   #hl-app .hl-board-panel {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -209,11 +212,11 @@
   #hl-app .hl-col-badge.regular { background: var(--hl-mid-gray); color: var(--hl-off-white); }
 
   #hl-app .hl-col {
-    padding: 1.5rem 1.2rem;
+    padding: 1rem;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 0.7rem;
   }
 
   #hl-app .hl-col.ten { border-right: 2px solid var(--hl-border); }
@@ -230,11 +233,12 @@
 
   #hl-app .hl-hidden { display: none !important; }
 
+  /* CARDS — bigger, bolder, full-width use */
   #hl-app .hl-card {
-    background: var(--hl-gray);
-    border-left: 3px solid var(--hl-border);
-    padding: 0.9rem 1rem;
-    border-radius: 0 2px 2px 0;
+    background: #1e1e1e;
+    border-left: 5px solid var(--hl-border);
+    padding: 1rem 1.1rem;
+    border-radius: 0 4px 4px 0;
     animation: hl-slideIn 0.25s ease;
     position: relative;
   }
@@ -247,54 +251,81 @@
   #hl-app .hl-card.ten-sec { border-left-color: var(--hl-yellow); }
   #hl-app .hl-card.regular { border-left-color: var(--hl-mid-gray); }
 
-  #hl-app .hl-card-name {
+  #hl-app .hl-card-tags {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.4rem;
+  }
+  #hl-app .hl-next-badge {
+    display: inline-block;
+    background: #E8874A;
+    color: #0A0A0A;
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.1rem;
+    font-size: 0.85rem;
     letter-spacing: 2px;
-    color: var(--hl-off-white);
-    margin-bottom: 0.3rem;
-  }
-
-  #hl-app .hl-card-problem {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 0.82rem;
-    color: #bbb;
-    line-height: 1.5;
-    margin-bottom: 0.5rem;
-  }
-
-  #hl-app .hl-card-meta {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.62rem;
-    color: #555;
-    letter-spacing: 1px;
+    padding: 0.1rem 0.5rem;
+    border-radius: 2px;
+    margin-bottom: 0.4rem;
+    margin-right: 0.4rem;
+    vertical-align: middle;
   }
 
   #hl-app .hl-card-type-tag {
     display: inline-block;
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.58rem;
+    font-size: 0.62rem;
     font-weight: 600;
     letter-spacing: 1.5px;
-    padding: 0.15rem 0.45rem;
+    padding: 0.15rem 0.5rem;
     border-radius: 2px;
     text-transform: uppercase;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
+    vertical-align: middle;
   }
 
   #hl-app .hl-card-type-tag.ten-sec { background: var(--hl-yellow); color: var(--hl-black); }
   #hl-app .hl-card-type-tag.regular { background: #3a3a3a; color: #bbb; }
 
+  #hl-app .hl-card-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.4rem;
+    letter-spacing: 3px;
+    color: var(--hl-off-white);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+    word-break: break-word;
+  }
+
+  #hl-app .hl-card-problem {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #ddd;
+    line-height: 1.3;
+    margin-bottom: 0.45rem;
+    word-break: break-word;
+  }
+
+  #hl-app .hl-card-meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: #555;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
   #hl-app .hl-delete-btn {
     position: absolute;
-    top: 0.6rem; right: 0.6rem;
+    top: 0.7rem; right: 0.7rem;
     background: none;
     border: none;
-    color: #3a3a3a;
-    font-size: 1rem;
+    color: #444;
+    font-size: 1.2rem;
     cursor: pointer;
     line-height: 1;
-    padding: 0.2rem;
+    padding: 0.2rem 0.4rem;
     transition: color 0.15s;
   }
   #hl-app .hl-delete-btn:hover { color: var(--hl-red); }
@@ -326,6 +357,7 @@
           <option value="analog">Analog and Digital</option>
           <option value="device">Device Invention</option>
           <option value="sustainable">Sustainable Design</option>
+          <option value="other">Other</option>
         </select>
       </div>
 
@@ -377,6 +409,13 @@
       <div class="hl-col regular hl-hidden" id="hl-col-sustainable-regular">
         <div class="hl-empty-state" id="hl-empty-sustainable-regular">No regular requests yet</div>
       </div>
+
+      <div class="hl-col ten hl-hidden" id="hl-col-other-ten">
+        <div class="hl-empty-state" id="hl-empty-other-ten">No 10-sec requests yet</div>
+      </div>
+      <div class="hl-col regular hl-hidden" id="hl-col-other-regular">
+        <div class="hl-empty-state" id="hl-empty-other-regular">No regular requests yet</div>
+      </div>
     </div>
   </div>
 </div>
@@ -397,16 +436,29 @@
   const fbApp = initializeApp(firebaseConfig);
   const db = getFirestore(fbApp);
 
+  const ALL_CLASSES = ['analog', 'device', 'sustainable', 'other'];
+  const CLASS_LABELS = {
+    analog: 'Analog and Digital',
+    device: 'Device Invention',
+    sustainable: 'Sustainable Design',
+    other: 'Other'
+  };
+  const CLASS_COLORS = {
+    analog: '#4A90D9',
+    device: '#4A90D9',
+    sustainable: '#4A90D9',
+    other: '#9B59D0'
+  };
+
   let hlCurrentClass = 'analog';
 
   // Real-time listener
   const q = query(collection(db, 'cards'), orderBy('timestamp', 'desc'));
   onSnapshot(q, (snapshot) => {
-    // Clear all columns
-    ['analog', 'device', 'sustainable'].forEach(cls => {
+    ALL_CLASSES.forEach(cls => {
       ['ten', 'regular'].forEach(side => {
         const col = document.getElementById('hl-col-' + cls + '-' + side);
-        col.querySelectorAll('.hl-card').forEach(c => c.remove());
+        if (col) col.querySelectorAll('.hl-card').forEach(c => c.remove());
       });
     });
 
@@ -414,12 +466,15 @@
       hlRenderCard(docSnap.id, docSnap.data());
     });
 
-    // Refresh empty states
-    ['analog', 'device', 'sustainable'].forEach(cls => {
+    ALL_CLASSES.forEach(cls => {
       ['ten', 'regular'].forEach(side => {
-        hlCheckEmpty(document.getElementById('hl-col-' + cls + '-' + side));
+        const col = document.getElementById('hl-col-' + cls + '-' + side);
+        if (col) hlCheckEmpty(col);
       });
     });
+
+    // Update NEXT badges after all cards are rendered
+    hlUpdateNextBadges();
   });
 
   function hlRenderCard(id, data) {
@@ -433,13 +488,35 @@
     card.dataset.id = id;
     card.innerHTML =
       '<button class="hl-delete-btn" title="Remove">\u00d7</button>' +
-      '<span class="hl-card-type-tag ' + data.type + '">' + typeLabel + '</span>' +
+      '<div class="hl-card-tags">' +
+        '<span class="hl-card-type-tag ' + data.type + '">' + typeLabel + '</span>' +
+        '<span class="hl-card-meta">' + data.dateStr + ' \u00b7 ' + data.timeStr + '</span>' +
+      '</div>' +
       '<div class="hl-card-name">' + hlEscape(data.name) + '</div>' +
-      '<div class="hl-card-problem">' + hlEscape(data.issue) + '</div>' +
-      '<div class="hl-card-meta">' + data.dateStr + ' \u00b7 ' + data.timeStr + '</div>';
+      '<div class="hl-card-problem">' + hlEscape(data.issue) + '</div>';
 
     card.querySelector('.hl-delete-btn').addEventListener('click', () => hlRemoveCard(id, card));
     col.appendChild(card);
+  }
+
+  function hlUpdateNextBadges() {
+    // Remove all existing NEXT badges
+    document.querySelectorAll('.hl-next-badge').forEach(b => b.remove());
+    // Add NEXT to the first card in each visible column
+    ALL_CLASSES.forEach(cls => {
+      ['ten', 'regular'].forEach(side => {
+        const col = document.getElementById('hl-col-' + cls + '-' + side);
+        if (!col) return;
+        const firstCard = col.querySelector('.hl-card');
+        if (firstCard) {
+          const badge = document.createElement('span');
+          badge.className = 'hl-next-badge';
+          badge.textContent = 'NEXT';
+          const tagsDiv = firstCard.querySelector('.hl-card-tags');
+          tagsDiv.insertBefore(badge, tagsDiv.firstChild);
+        }
+      });
+    });
   }
 
   async function hlAddCard() {
@@ -478,7 +555,7 @@
 
     btn.disabled = false;
     btn.textContent = 'ASSIGN \u2192';
-  };
+  }
 
   async function hlRemoveCard(id, card) {
     card.style.opacity = '0';
@@ -491,14 +568,18 @@
 
   function hlSwitchClass() {
     hlCurrentClass = document.getElementById('hl-class-select').value;
-    const labels = { analog: 'Analog and Digital', device: 'Device Invention', sustainable: 'Sustainable Design' };
-    document.getElementById('hl-board-class-title').textContent = labels[hlCurrentClass];
-    ['analog', 'device', 'sustainable'].forEach(cls => {
+    const titleEl = document.getElementById('hl-board-class-title');
+    titleEl.textContent = CLASS_LABELS[hlCurrentClass];
+    titleEl.style.color = CLASS_COLORS[hlCurrentClass];
+
+    ALL_CLASSES.forEach(cls => {
       const active = cls === hlCurrentClass;
-      document.getElementById('hl-col-' + cls + '-ten').classList.toggle('hl-hidden', !active);
-      document.getElementById('hl-col-' + cls + '-regular').classList.toggle('hl-hidden', !active);
+      const tenCol = document.getElementById('hl-col-' + cls + '-ten');
+      const regCol = document.getElementById('hl-col-' + cls + '-regular');
+      if (tenCol) tenCol.classList.toggle('hl-hidden', !active);
+      if (regCol) regCol.classList.toggle('hl-hidden', !active);
     });
-  };
+  }
 
   async function hlClearAll() {
     const ids = [];
@@ -509,7 +590,7 @@
     for (const id of ids) {
       try { await deleteDoc(doc(db, 'cards', id)); } catch(e) {}
     }
-  };
+  }
 
   function hlCheckEmpty(col) {
     const emptyEl = document.getElementById(col.id.replace('hl-col-', 'hl-empty-'));
@@ -520,7 +601,6 @@
     return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   }
 
-  // Wire up UI events here so module scope isn't an issue
   document.getElementById('hl-class-select').addEventListener('change', hlSwitchClass);
   document.getElementById('hl-submit').addEventListener('click', hlAddCard);
 
