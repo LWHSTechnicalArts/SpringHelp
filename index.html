@@ -454,7 +454,7 @@
   let hlCurrentClass = 'analog';
 
   // Real-time listener
-  const q = query(collection(db, 'cards'), orderBy('timestamp', 'desc'));
+  const q = query(collection(db, 'cards'), orderBy('timestamp', 'asc'));
   onSnapshot(q, (snapshot) => {
     ALL_CLASSES.forEach(cls => {
       ['ten', 'regular'].forEach(side => {
